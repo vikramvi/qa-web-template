@@ -15,7 +15,7 @@ References:
 2. https://github.com/rest-assured/rest-assured/wiki/Usage
 
 Tips: 
-1. Don't hard-code any locator and driver paths.
+1. Try not to hard-code any locator and driver paths ;)
 
 ## How to customize this project
  
