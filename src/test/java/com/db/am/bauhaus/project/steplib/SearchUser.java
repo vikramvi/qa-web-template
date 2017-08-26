@@ -30,4 +30,25 @@ public class SearchUser extends ScenarioSteps {
     public void verify_result_for_all_categories() {
         assertThat(mainSearchPage.getAllCategoriesHeader(), containsString(searchText));
     }
+
+    @Step
+    public void search_from_shopByCategory_icon_click(){
+        mainSearchPage.clickShopByCategoryIcon("Toys & Games");
+    }
+
+    @Step
+    public void verify_result_for_shopByCategory_icon_click() {
+        assertThat(mainSearchPage.getShopByCategoryIconSearchResultsPageHeader(), containsString("Toys & Games"));
+    }
+
+    @Step
+    public void verify_menuItem_under_header_menu(){
+        mainSearchPage.clickMenuItemUnderMenu("Kids & Baby","Baby & Child Care");
+    }
+
+    @Step
+    public void verify_result_for_menuItem_link_click(){
+        assertThat(mainSearchPage.getMenuItemSearchResultsPageHeader(), containsString("Baby & Child Care"));
+    }
+
 }

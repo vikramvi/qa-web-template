@@ -56,9 +56,21 @@ public class SearchSteps {
         theActorInTheSpotlight().attemptsTo(SearchFor.randomText());
     }
 
+    @When("^he searches for a product by clicking one of Shop by category icon$")
+    public void search_by_clicking_icon_under_shopByCategory(){
+        user.search_from_shopByCategory_icon_click();
+    }
+
+    @When("^he clicks on menuitem under menu$")
+    public void user_clicks_on_menuitem_under_menu(){
+        user.verify_menuItem_under_header_menu();
+    }
+
     @Then("^the result should be displayed$")
     public void verify_search_result() {
-        user.verify_result_for_top_categories();
+        //TBD: This feature is not present in current version of etsy
+        //BUG: Clarify with PM / Dev
+        //user.verify_result_for_top_categories();
         user.verify_result_for_all_categories();
     }
 
@@ -66,8 +78,20 @@ public class SearchSteps {
     public void verify_search_result_screenplay() {
         String searchText = Serenity.sessionVariableCalled(SessionVar.SEARCH_TEXT).toString();
         theActorInTheSpotlight().should(
-                seeThat("the top categories header ", the(SearchTarget.TOP_CATEGORIES_HEADER), containsText(searchText)),
+                //TBD: This feature is not present in current version of etsy
+                //BUG: Clarify with PM / Dev
+                //seeThat("the top categories header ", the(SearchTarget.TOP_CATEGORIES_HEADER), containsText(searchText)),
                 seeThat("the all categories header ", the(SearchTarget.ALL_CATEGORIES_HEADER), containsText(searchText))
         );
+    }
+
+    @Then("^Shop by category icon result should be displayed$")
+    public void verify_search_result_for_shopByCategory_icon_click(){
+        user.verify_result_for_shopByCategory_icon_click();
+    }
+
+    @Then("^menu item link search page result should be displayed$")
+    public void verify_search_result_for_menuItem_search_page(){
+        user.verify_result_for_menuItem_link_click();
     }
 }
