@@ -29,6 +29,9 @@ public class MainSearchPage extends PageObject {
     @FindBy(xpath="//a[@data-url-with-anchor ='https://www.etsy.com/c/toys-and-games?anchor_listing_id=544894349&ref=hp']/div/picture")
     WebElement shopByCategoryIconToysGames;
 
+    String shopByCategorySectionXpath = "//span[@class='vesta-hp-category-default']";
+    String shopByCategoryIconToysGamesXpath = "//a[@data-url-with-anchor ='https://www.etsy.com/c/toys-and-games?anchor_listing_id=544894349&ref=hp']/div/picture";
+
     @FindBy(xpath="//div[@id='content']//a[@class='text-gray-lighter'][2]")
     WebElement shopByCategoryIconSearchPageHeaderText;
 
@@ -69,7 +72,7 @@ public class MainSearchPage extends PageObject {
         try {
             switch (iconName) {
                 case "Toys & Games":
-                    ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", getDriver().findElement(By.xpath("//span[@class='vesta-hp-category-default']")));
+                    ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", getDriver().findElement(By.xpath(shopByCategorySectionXpath)));
                     Thread.sleep(1000);
 
                     //TBD Not working ??
@@ -85,7 +88,7 @@ public class MainSearchPage extends PageObject {
                     //((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", shopByCategoryIconToysGames);
 
                     //Working
-                    ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", getDriver().findElement( By.xpath("//a[@data-url-with-anchor ='https://www.etsy.com/c/toys-and-games?anchor_listing_id=544894349&ref=hp']/div/picture") ));
+                    ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", getDriver().findElement( By.xpath(shopByCategoryIconToysGamesXpath) ));
 
                     break;
 
